@@ -6,7 +6,7 @@
 
 <div class="container mt-4">
     <h2>Resultado da Análise</h2>
-
+    
     <div class="mb-3">
         <a asp-action="Index" class="btn btn-secondary">Voltar</a>
     </div>
@@ -41,6 +41,10 @@
                         <tr>
                             <td><strong>Data</strong></td>
                             <td>@(string.IsNullOrEmpty(Model.Date) ? "Não identificado" : Model.Date)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Documento do Emissor</strong></td>
+                            <td>@(string.IsNullOrEmpty(Model.IssuerDocument) ? "Não identificado" : Model.IssuerDocument)</td>
                         </tr>
                     </tbody>
                 </table>

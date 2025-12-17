@@ -9,5 +9,7 @@ namespace BankCheckOCR.Models
         public string? RawText { get; set; }
         public bool Success { get; set; }
         public string? ErrorMessage { get; set; }
+
+        public string?  IssuerDocument { get; set; }
     }
 }
