@@ -11,5 +11,6 @@ namespace BankCheckOCR.Models
         public string? ErrorMessage { get; set; }
 
         public string?  IssuerDocument { get; set; }
+        public string? ImageBase64 { get; set; }
     }
 }
