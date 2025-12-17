@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Upload Check";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Leitor de Cheques Bancários</h1>
+    <p>Envie uma imagem de um cheque para extrair os dados via Google Cloud Vision.</p>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <form asp-action="Analyze" asp-controller="Home" method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
+                <div class="mb-3">
+                    <label for="checkImage" class="form-label">Selecione a imagem do cheque</label>
+                    <input type="file" class="form-control" name="checkImage" id="checkImage" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Processar Imagem</button>
+            </form>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger mt-3">
+                    @ViewBag.Error
+                </div>
+            }
+        </div>
+    </div>
+</div>

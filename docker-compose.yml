@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  bankcheckocr:
+    image: bankcheckocr
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # Option 1: Pass the JSON content directly
+      - GOOGLE_CREDENTIALS_JSON=${GOOGLE_CREDENTIALS_JSON}
+      # Option 2: Pass the file path (requires volume mount)
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/credentials/key.json
+    ports:
+      - "5000:8080"
+    volumes:
+      # Uncomment if using file-based credentials
+      # - ./credentials:/app/credentials
+      - .:/app/data
