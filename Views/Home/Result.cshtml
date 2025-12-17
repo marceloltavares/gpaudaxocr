@@ -14,6 +14,18 @@
     @if (Model.Success)
     {
         <div class="card shadow-sm mb-4">
+             <div class="card-header bg-success text-white">
+                <h5 class="mb-0">Conferência de Dados</h5>
+            </div>
+            <div class="card-body text-center">
+                 @if (!string.IsNullOrEmpty(Model.ImageBase64))
+                 {
+                     <img src="data:image/png;base64,@Model.ImageBase64" class="img-fluid border mb-3" style="max-height: 300px;" alt="Cheque Processado" />
+                 }
+            </div>
+        </div>
+
+        <div class="card shadow-sm mb-4">
             <div class="card-header bg-success text-white">
                 <h5 class="mb-0">Dados Extraídos</h5>
             </div>
@@ -28,23 +40,23 @@
                     <tbody>
                         <tr>
                             <td><strong>CMC7</strong></td>
-                            <td>@(string.IsNullOrEmpty(Model.CMC7) ? "Não identificado" : Model.CMC7)</td>
+                            <td><input type="text" class="form-control" value="@(string.IsNullOrEmpty(Model.CMC7) ? "" : Model.CMC7)" /></td>
                         </tr>
                         <tr>
                             <td><strong>Código do Banco</strong></td>
-                            <td>@(string.IsNullOrEmpty(Model.BankCode) ? "Não identificado" : Model.BankCode)</td>
+                            <td><input type="text" class="form-control" value="@(string.IsNullOrEmpty(Model.BankCode) ? "" : Model.BankCode)" /></td>
                         </tr>
                         <tr>
                             <td><strong>Valor (R$)</strong></td>
-                            <td>@(string.IsNullOrEmpty(Model.Amount) ? "Não identificado" : Model.Amount)</td>
+                            <td><input type="text" class="form-control" value="@(string.IsNullOrEmpty(Model.Amount) ? "" : Model.Amount)" /></td>
                         </tr>
                         <tr>
                             <td><strong>Data</strong></td>
-                            <td>@(string.IsNullOrEmpty(Model.Date) ? "Não identificado" : Model.Date)</td>
+                            <td><input type="text" class="form-control" value="@(string.IsNullOrEmpty(Model.Date) ? "" : Model.Date)" /></td>
                         </tr>
                         <tr>
                             <td><strong>Documento do Emissor</strong></td>
-                            <td>@(string.IsNullOrEmpty(Model.IssuerDocument) ? "Não identificado" : Model.IssuerDocument)</td>
+                            <td><input type="text" class="form-control" value="@(string.IsNullOrEmpty(Model.IssuerDocument) ? "" : Model.IssuerDocument)" /></td>
                         </tr>
                     </tbody>
                 </table>

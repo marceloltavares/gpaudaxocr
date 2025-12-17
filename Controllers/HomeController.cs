@@ -34,8 +34,19 @@ namespace BankCheckOCR.Controllers
             {
                 using (var stream = checkImage.OpenReadStream())
                 {
-                    var result = await _visionService.AnalyzeCheckAsync(stream);
-                    return View("Result", result);
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await stream.CopyToAsync(memoryStream);
+                        memoryStream.Position = 0;
+
+                        var result = await _visionService.AnalyzeCheckAsync(memoryStream);
+
+                        memoryStream.Position = 0;
+                        var imageBytes = memoryStream.ToArray();
+                        result.ImageBase64 = Convert.ToBase64String(imageBytes);
+
+                        return View("Result", result);
+                    }
                 }
             }
             catch (Exception ex)
